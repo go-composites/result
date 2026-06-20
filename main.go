@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/davecgh/go-spew/spew"
-	Result "github.com/golang-oop/result/src"
+	Result "github.com/golang-cop/result/src"
 )
 
 func main() {

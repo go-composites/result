@@ -3,7 +3,7 @@ package Result
 import (
 	"testing"
 
-	Error "github.com/golang-oop/error/src"
+	Error "github.com/golang-cop/error/src"
 )
 
 func TestNewDefault(t *testing.T) {

@@ -20,4 +20,8 @@
 # Go workspace file
 go.work
 .vscode
-bin/
+bin//bin/
+/__/
+/result
+coverprofile.out
+/bin/

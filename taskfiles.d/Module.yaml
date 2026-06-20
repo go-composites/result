@@ -6,7 +6,7 @@ tasks:
     cmds:
     - |
     
-      go mod init github.com/golang-oop/result
+      go mod init github.com/golang-cop/result
 
   requirements:
     desc: Add module requirements and sums
