@@ -1,9 +1,9 @@
 package Result
 
 import (
-	Error "github.com/golang-cop/error/src"
-	NullError "github.com/golang-cop/error/src/null"
-	Null "github.com/golang-cop/null/src"
+	Error "github.com/go-composites/error/src"
+	NullError "github.com/go-composites/error/src/null"
+	Null "github.com/go-composites/null/src"
 )
 
 type Interface interface {
