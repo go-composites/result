@@ -22,7 +22,20 @@ type Option func(*data)
 /*
 Create a new result.
 */
+// okResult is the shared empty success Result (null payload, no error). A
+// Result is immutable once built, so the very common no-argument completion
+// case — Result.New() from Each/Clear/… — returns this one cached instance
+// instead of allocating. With null/null-error interned too, a Result.New() with
+// options now allocates only the wrapper itself, not its defaults.
+var okResult = &data{
+	payload: Null.New(),
+	error:   NullError.New(),
+}
+
 func New(options ...Option) Interface {
+	if len(options) == 0 {
+		return okResult
+	}
 	d := &data{
 		payload: Null.New(),
 		error:   NullError.New(),
