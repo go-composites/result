@@ -46,6 +46,46 @@ func New(options ...Option) Interface {
 	return d
 }
 
+// okTrue and okFalse are interned success Results carrying the boolean payloads
+// true and false. Predicate-style helpers across the org (Any/All/Contains, …)
+// return exactly these two values, so caching them turns those returns into
+// allocation-free lookups.
+var (
+	okTrue  = &data{payload: true, error: NullError.New()}
+	okFalse = &data{payload: false, error: NullError.New()}
+)
+
+/*
+Ok is the direct, allocation-lean equivalent of New(WithPayload(payload)): a
+success Result (no error) carrying payload, built without the functional-options
+closure or variadic slice. The two boolean payloads are interned — Ok(true) and
+Ok(false) return shared immutable singletons and allocate nothing.
+*/
+func Ok(payload interface{}) Interface {
+	if b, isBool := payload.(bool); isBool {
+		if b {
+			return okTrue
+		}
+		return okFalse
+	}
+	return &data{
+		payload: payload,
+		error:   NullError.New(),
+	}
+}
+
+/*
+Err is the direct, allocation-lean equivalent of New(WithError(err)): a failure
+Result carrying err over a null payload, built without the functional-options
+closure or variadic slice.
+*/
+func Err(err Error.Interface) Interface {
+	return &data{
+		payload: Null.New(),
+		error:   err,
+	}
+}
+
 /*
 Functional parameter to set the result payload.
 */

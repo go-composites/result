@@ -1,6 +1,7 @@
 package Result
 
 import (
+	"reflect"
 	"testing"
 
 	Error "github.com/go-composites/error/src"
@@ -48,6 +49,68 @@ func TestWithError(t *testing.T) {
 	}
 	if got := r.Error().Message(); got != want {
 		t.Errorf("Error().Message() = %q, want %q", got, want)
+	}
+}
+
+func TestOkBoolInterned(t *testing.T) {
+	rTrue := Ok(true)
+	if got := rTrue.Payload(); got != true {
+		t.Errorf("Ok(true).Payload() = %v, want true", got)
+	}
+	if rTrue.HasError() {
+		t.Errorf("Ok(true).HasError() = true, want false")
+	}
+	if Ok(true) != rTrue {
+		t.Errorf("Ok(true) is not interned: repeated calls returned distinct values")
+	}
+
+	rFalse := Ok(false)
+	if got := rFalse.Payload(); got != false {
+		t.Errorf("Ok(false).Payload() = %v, want false", got)
+	}
+	if rFalse.HasError() {
+		t.Errorf("Ok(false).HasError() = true, want false")
+	}
+	if Ok(false) != rFalse {
+		t.Errorf("Ok(false) is not interned: repeated calls returned distinct values")
+	}
+
+	if rTrue == rFalse {
+		t.Errorf("Ok(true) and Ok(false) returned the same instance")
+	}
+}
+
+func TestOkNonBool(t *testing.T) {
+	want := "payload-value"
+	r := Ok(want)
+	if got := r.Payload(); got != want {
+		t.Errorf("Ok(%q).Payload() = %v, want %v", want, got, want)
+	}
+	if r.HasError() {
+		t.Errorf("Ok(%q).HasError() = true, want false", want)
+	}
+	if !r.Error().IsNull() {
+		t.Errorf("Ok(%q).Error().IsNull() = false, want true", want)
+	}
+}
+
+func TestErr(t *testing.T) {
+	e := Error.New("boom")
+	r := Err(e)
+	if !r.HasError() {
+		t.Errorf("Err(e).HasError() = false, want true")
+	}
+	if got := r.Error(); got != e {
+		t.Errorf("Err(e).Error() = %v, want %v", got, e)
+	}
+	// The payload is a null value: same concrete type as the one New(WithError)
+	// leaves in place, and never nil.
+	if r.Payload() == nil {
+		t.Errorf("Err(e).Payload() = nil, want a null value")
+	}
+	reference := New(WithError(e))
+	if got, want := reflect.TypeOf(r.Payload()), reflect.TypeOf(reference.Payload()); got != want {
+		t.Errorf("Err(e).Payload() type = %v, want %v (null)", got, want)
 	}
 }
 
