@@ -4,10 +4,14 @@ github.com/go-composites/error v0.0.0-20260621061850-8f949885a586 h1:gA6h4DA7NSi
 github.com/go-composites/error v0.0.0-20260621061850-8f949885a586/go.mod h1:9Lf1BQDdG/DDzw+WaWctBOzk69PTLjREAiPcKfSUilU=
 github.com/go-composites/error v0.0.0-20260830075421-e9e68493eded h1:lVkmXqI0GyJ7qfCXL9RptTb9HhCIh+2dsXoQ6N2N8BE=
 github.com/go-composites/error v0.0.0-20260830075421-e9e68493eded/go.mod h1:8/Ur4dmauQ+KrNkBsrvu8fiWnkcMJO5ybJksQL9Auf8=
+github.com/go-composites/error v0.0.0-20260830144553-70431cbaa0f4 h1:XBIU4IY2wwjXBUTCK6/kYz21g2bOwqO6P15Ay2An0Y8=
+github.com/go-composites/error v0.0.0-20260830144553-70431cbaa0f4/go.mod h1:GQil0nxfWkPMkYrP3RHLucu2HpsGwwT5WdkooH8bC8M=
 github.com/go-composites/null v0.0.0-20260621061849-c8074799d5aa h1:C7LXruttK94qEUNp4HV5Cqcxt+kp5NXSB0nxKVa0N+c=
 github.com/go-composites/null v0.0.0-20260621061849-c8074799d5aa/go.mod h1:6cSkTkpvobmk2/FSOCRu928lYmWCp87HyCSffyQFhVk=
 github.com/go-composites/null v0.0.0-20260830075420-b67dd29b13d4 h1:OJMZVVNfmvptZuAME/IMb5o4aa6yPLL4opITh8o4I2Q=
 github.com/go-composites/null v0.0.0-20260830075420-b67dd29b13d4/go.mod h1:6cSkTkpvobmk2/FSOCRu928lYmWCp87HyCSffyQFhVk=
+github.com/go-composites/null v0.0.0-20260830144216-7ac5fcb425b7 h1:KMDUQYuCdjjFLEL1weUO1NLUnDB/I2ELMNVusXNMnnY=
+github.com/go-composites/null v0.0.0-20260830144216-7ac5fcb425b7/go.mod h1:6cSkTkpvobmk2/FSOCRu928lYmWCp87HyCSffyQFhVk=
 github.com/go-logr/logr v1.4.1 h1:pKouT5E8xu9zeFC39JXRDukb6JFQPXM5p5I91188VAQ=
 github.com/go-logr/logr v1.4.1/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-task/slim-sprig/v3 v3.0.0 h1:sUs3vkvUymDpBKi3qH1YSqBQk9+9D/8M2mN1vB6EwHI=
