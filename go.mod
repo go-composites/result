@@ -1,6 +1,6 @@
 module github.com/go-composites/result
 
-go 1.26.4
+go 1.27.1
 
 require (
 	github.com/davecgh/go-spew v1.1.1
